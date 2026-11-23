@@ -172,7 +172,7 @@
           <a class="btn primary" href="resume.pdf">Resume (PDF)</a>
           <a class="btn" href="https://github.com/yslin0524">GitHub</a>
           <a class="btn" href="https://www.linkedin.com/in/yishenglin0524/">LinkedIn</a>
-          <a class="btn" href="mailto:ethan.lin5568@gmail.com">Email</a>
+          <a class="btn js-email" href="#" data-u="ethan.lin5568" data-d="gmail.com">Email</a>
         </div>
       </div>
       <!-- 換成你的照片：把照片存成 assets/photo.jpg -->
@@ -241,6 +241,12 @@
               which traced most failures to low-contrast surfaces, with poor lighting causing occasional errors. The takeaway:
               offline accuracy did not predict how the robot behaved.
             </p>
+            <ul>
+              <li>Four-node ROS 2 pipeline: camera, depth inference, navigation policy, and motor controller</li>
+              <li>Depth-to-cost-map steering policy with a left / center / right state machine and a 2 s decision window</li>
+              <li>20 Hz controller decoupled from the 1.1 FPS depth model, with a stale-decision stop as a safety fallback</li>
+              <li>On-robot deployment and a three-level evaluation pipeline</li>
+            </ul>
             <div class="metrics">
               <div class="metric"><b>83.1%</b><span>obstacle recall (NYU-D)</span></div>
               <div class="metric"><b>78.4%</b><span>steering agreement with a human driver</span></div>
@@ -380,11 +386,20 @@
 
 <footer>
   <div class="wrap">
-    <a href="mailto:ethan.lin5568@gmail.com">ethan.lin5568@gmail.com</a> ·
+    <a class="js-email" href="#" data-u="ethan.lin5568" data-d="gmail.com" data-show="1">Email</a> ·
     <a href="https://github.com/yslin0524">GitHub</a> ·
     <a href="https://www.linkedin.com/in/yishenglin0524/">LinkedIn</a>
   </div>
 </footer>
+
+<script>
+  // Build the email address at runtime so simple scrapers reading the HTML source do not see it.
+  document.querySelectorAll('.js-email').forEach(function (link) {
+    var address = link.dataset.u + '@' + link.dataset.d;
+    link.href = 'mailto:' + address;
+    if (link.dataset.show) { link.textContent = address; }
+  });
+</script>
 
 </body>
 </html>
