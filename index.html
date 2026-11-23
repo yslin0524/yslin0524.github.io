@@ -88,12 +88,21 @@
     display: grid; grid-template-columns: 340px 1fr;
   }
   .card.no-media { grid-template-columns: 1fr; }
+  .thumb {
+    float: right; width: 220px; margin: 0 0 12px 20px;
+    border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
+    background: var(--tag); display: block; color: var(--muted);
+  }
+  .thumb:hover { text-decoration: none; border-color: var(--accent); }
+  .thumb img { width: 100%; height: auto; display: block; }
+  .thumb span { display: block; font-size: 12px; text-align: center; padding: 4px 0; }
+  @media (max-width: 600px) { .thumb { float: none; width: 100%; margin: 0 0 14px; } }
   .card.stacked { grid-template-columns: 1fr; }
   .card.stacked .media { min-height: 0; }
   .card.stacked .media video { height: auto; max-height: none; }
   @media (max-width: 760px) { .card { grid-template-columns: 1fr; } }
   .media { background: var(--tag); display: flex; align-items: center; justify-content: center; min-height: 200px; }
-  .media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .media img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .media video { width: 100%; height: 100%; max-height: 520px; object-fit: contain; background: #000; display: block; }
   .body { padding: 22px 24px; }
   .meta { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 4px; }
@@ -180,11 +189,12 @@
       <div class="projects">
 
         <!-- Hybrid A* -->
-        <article class="card">
-          <div class="media">
-            <img src="assets/hybrid_astar.gif" alt="Hybrid A* planner demo" loading="lazy" onerror="this.parentElement.style.display='none'; this.closest('.card').classList.add('no-media')">
-          </div>
+        <article class="card no-media">
           <div class="body">
+            <a class="thumb" href="assets/hybrid_astar.gif" target="_blank" rel="noopener" title="Click to enlarge">
+              <img src="assets/hybrid_astar.gif" alt="Hybrid A* planner demo in RViz" loading="lazy" onerror="this.closest('.thumb').style.display='none'">
+              <span>Demo · click to enlarge</span>
+            </a>
             <div class="meta">Lab ASV project · Independent research study · C++ / ROS 2</div>
             <h3>Hybrid A* Global Planner for an Autonomous Surface Vessel</h3>
             <p class="role-note">Team project. I owned the global planner; teammates handled integration and field testing on the vessel.</p>
