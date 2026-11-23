@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ethan Lin | Robotics Engineer</title>
+<meta name="description" content="Yi-Sheng (Ethan) Lin, robotics engineer working on planning, state estimation, and perception on real robots. MS Robotics and MSE Naval Architecture, University of Michigan.">
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --text: #1b2430;
+    --muted: #5b6676;
+    --line: #e2e6ec;
+    --accent: #0b6e8a;
+    --accent-soft: #e3f2f6;
+    --tag: #eef1f5;
+    --shadow: 0 1px 2px rgba(16, 24, 40, .05), 0 4px 16px rgba(16, 24, 40, .06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f141a;
+      --surface: #161d26;
+      --text: #e6ebf1;
+      --muted: #9aa7b6;
+      --line: #263140;
+      --accent: #4fb8d6;
+      --accent-soft: #12303a;
+      --tag: #1d2632;
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+  /* nav */
+  header.nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  header.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; }
+  .brand { font-weight: 700; color: var(--text); letter-spacing: .2px; }
+  .brand:hover { text-decoration: none; }
+  nav a { color: var(--muted); margin-left: 22px; font-size: 15px; }
+  nav a:hover { color: var(--text); text-decoration: none; }
+  @media (max-width: 600px) { nav a { margin-left: 14px; font-size: 14px; } nav .hide-sm { display: none; } }
+
+  /* hero */
+  .hero { padding-top: 64px; padding-bottom: 40px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; }
+  @media (max-width: 720px) { .hero-grid { grid-template-columns: 1fr; } .avatar { order: -1; } }
+  .hero h1 { font-size: clamp(32px, 5vw, 44px); line-height: 1.15; margin: 0 0 8px; }
+  .hero .role { font-size: 19px; color: var(--accent); font-weight: 600; margin: 0 0 18px; }
+  .hero p.lead { font-size: 17px; color: var(--muted); margin: 0 0 24px; max-width: 600px; }
+  .avatar {
+    width: 180px; height: 180px; border-radius: 50%; object-fit: cover;
+    border: 4px solid var(--surface); box-shadow: var(--shadow); background: var(--tag);
+  }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-block; padding: 9px 16px; border-radius: 8px; font-weight: 600; font-size: 15px;
+    border: 1px solid var(--line); color: var(--text); background: var(--surface);
+  }
+  .btn:hover { text-decoration: none; border-color: var(--accent); }
+  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn.primary:hover { filter: brightness(1.08); }
+
+  section { padding: 44px 0; }
+  section h2 { font-size: 26px; margin: 0 0 6px; }
+  section .sub { color: var(--muted); margin: 0 0 26px; }
+
+  /* projects */
+  .projects { display: grid; gap: 22px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: var(--shadow); overflow: hidden;
+    display: grid; grid-template-columns: 340px 1fr;
+  }
+  .card.no-media { grid-template-columns: 1fr; }
+  @media (max-width: 760px) { .card { grid-template-columns: 1fr; } }
+  .media { background: var(--tag); display: flex; align-items: center; justify-content: center; min-height: 200px; }
+  .media img, .media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .body { padding: 22px 24px; }
+  .meta { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 4px; }
+  .card h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.3; }
+  .card p { margin: 0 0 12px; }
+  .card ul { margin: 0 0 14px; padding-left: 20px; }
+  .card li { margin-bottom: 4px; }
+  .role-note {
+    font-size: 14px; background: var(--accent-soft); border-left: 3px solid var(--accent);
+    padding: 8px 12px; border-radius: 6px; margin: 0 0 14px;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .tag { font-size: 12.5px; background: var(--tag); color: var(--muted); padding: 3px 9px; border-radius: 999px; }
+  .links a { font-weight: 600; font-size: 14.5px; margin-right: 16px; }
+  .metrics { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 14px; }
+  .metric { background: var(--tag); border-radius: 10px; padding: 8px 12px; min-width: 110px; }
+  .metric b { display: block; font-size: 20px; color: var(--accent); line-height: 1.2; }
+  .metric span { font-size: 12.5px; color: var(--muted); }
+
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+  .small-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; box-shadow: var(--shadow); }
+  .small-card h4 { margin: 0 0 6px; font-size: 17px; }
+  .small-card p { margin: 0 0 8px; color: var(--muted); font-size: 15px; }
+
+  .edu { display: grid; gap: 14px; }
+  .edu .row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; }
+  .edu .row b { display: block; }
+  .edu .row span { color: var(--muted); font-size: 15px; }
+
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .skills div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .skills h4 { margin: 0 0 6px; font-size: 15px; color: var(--accent); }
+  .skills p { margin: 0; font-size: 15px; color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Ethan Lin</a>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#about" class="hide-sm">About</a>
+      <a href="#education" class="hide-sm">Education</a>
+      <a href="resume.pdf">Resume</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <h1>Yi-Sheng (Ethan) Lin</h1>
+        <p class="role">Robotics Engineer · Planning, State Estimation, Perception</p>
+        <p class="lead">
+          I build autonomy software that runs on real robots, and I care about finding out why
+          something that works in simulation fails on hardware. MS in Robotics and MSE in Naval
+          Architecture and Marine Engineering from the University of Michigan.
+        </p>
+        <div class="btns">
+          <a class="btn primary" href="resume.pdf">Resume (PDF)</a>
+          <a class="btn" href="https://github.com/yslin0524">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/yishenglin0524/">LinkedIn</a>
+          <a class="btn" href="mailto:ethan.lin5568@gmail.com">Email</a>
+        </div>
+      </div>
+      <!-- 換成你的照片：把照片存成 assets/photo.jpg -->
+      <img class="avatar" src="assets/photo.jpg" alt="Photo of Ethan Lin" onerror="this.style.display='none'">
+    </div>
+  </div>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <p class="sub">Planning, estimation, and perception on real and simulated robots.</p>
+
+      <div class="projects">
+
+        <!-- Hybrid A* -->
+        <article class="card">
+          <div class="media">
+            <img src="https://github.com/yslin0524/Hybrid-A-Star/raw/main/hybrid_astar_demo.gif" alt="Hybrid A* planner demo" loading="lazy" onerror="this.parentElement.style.display='none'; this.closest('.card').classList.add('no-media')">
+          </div>
+          <div class="body">
+            <div class="meta">Lab ASV project · Independent research study · C++ / ROS 2</div>
+            <h3>Hybrid A* Global Planner for an Autonomous Surface Vessel</h3>
+            <p class="role-note">Team project. I owned the global planner; teammates handled integration and field testing on the vessel.</p>
+            <p>
+              A kinematically feasible global planner for a boat with a large turning radius. The search runs
+              in (x, y, θ) and connects nodes with Reeds-Shepp curves, so every path segment is drivable.
+              My planner code was used on the lab's vessel as a standalone ROS 2 node.
+            </p>
+            <ul>
+              <li>Hybrid A* search with 72 heading bins (5°) and 11 steering directions per expansion</li>
+              <li>Reeds-Shepp motion via OMPL, with collision checking sampled along each curve</li>
+              <li>Shot-to-goal analytic expansion at every node, which ends the search early in open water</li>
+              <li>PointCloud2 costmap layer that projects 3D sensor data into the planning grid</li>
+              <li>Also wrapped the planner as a Nav2 global planner plugin</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">C++17</span><span class="tag">ROS 2</span><span class="tag">OMPL</span>
+              <span class="tag">Hybrid A*</span><span class="tag">Reeds-Shepp</span><span class="tag">Nav2</span>
+            </div>
+            <div class="links"><a href="https://github.com/yslin0524/Hybrid-A-Star">Code →</a></div>
+          </div>
+        </article>
+
+        <!-- DAV2 -->
+        <article class="card">
+          <div class="media">
+            <!-- 放 DAV2 的影片截圖或 GIF：assets/dav2.gif -->
+            <img src="assets/dav2.gif" alt="Monocular depth navigation on a Raspberry Pi 5 robot" loading="lazy" onerror="this.parentElement.style.display='none'; this.closest('.card').classList.add('no-media')">
+          </div>
+          <div class="body">
+            <div class="meta">Python · PyTorch · Raspberry Pi 5</div>
+            <h3>Monocular Depth Navigation on a CPU-only Robot</h3>
+            <p>
+              Deployed Depth Anything V2 (ViT-S) on a CPU-only Raspberry Pi 5 robot as a camera-only
+              replacement for LiDAR in closed-loop obstacle avoidance, trading model size and input resolution
+              for a usable 1.1 FPS.
+            </p>
+            <p>
+              The depth maps looked fine, but the robot still made poor decisions. Instead of tuning the model,
+              I built a three-level evaluation (pixel, decision, and human-in-the-loop with per-waypoint logging),
+              which traced failures to low-contrast obstacles and low-angle side lighting. The takeaway:
+              offline accuracy did not predict how the robot behaved.
+            </p>
+            <div class="metrics">
+              <div class="metric"><b>83.1%</b><span>obstacle recall (NYU-D)</span></div>
+              <div class="metric"><b>78.4%</b><span>steering agreement with a human driver</span></div>
+              <div class="metric"><b>80%</b><span>route completion</span></div>
+            </div>
+            <div class="tags">
+              <span class="tag">Depth Anything V2</span><span class="tag">PyTorch</span>
+              <span class="tag">Edge deployment</span><span class="tag">Evaluation design</span>
+            </div>
+            <div class="links"><a href="https://github.com/yslin0524/DAV2-MBot-Nav">Code →</a></div>
+          </div>
+        </article>
+
+        <!-- BotLab -->
+        <article class="card">
+          <div class="media">
+            <!-- 放 BotLab 的照片或影片：assets/botlab.jpg -->
+            <img src="assets/botlab.jpg" alt="BotLab autonomous robot" loading="lazy" onerror="this.parentElement.style.display='none'; this.closest('.card').classList.add('no-media')">
+          </div>
+          <div class="body">
+            <div class="meta">ROB 550 team project · C++ · Physical robot</div>
+            <h3>BotLab: Full-Stack Autonomous Mobile Robot</h3>
+            <p>
+              A complete autonomy stack for a differential-drive robot, from motor control to mapping and
+              exploration, running on hardware.
+            </p>
+            <ul>
+              <li>Particle filter SLAM with LiDAR scan deskewing</li>
+              <li>Gyrodometry: fused IMU and wheel encoders for a more reliable heading estimate</li>
+              <li>A* planning with 0.15 m obstacle inflation and frontier-based exploration</li>
+              <li>Feedforward-PID motor control and a rotate-translate-rotate controller with hysteresis to prevent oscillation</li>
+              <li>Rack-and-pinion forklift with synchronized servo control and QR-code-triggered payload retrieval</li>
+            </ul>
+            <div class="tags">
+              <span class="tag">SLAM</span><span class="tag">Particle filter</span><span class="tag">A*</span>
+              <span class="tag">PID</span><span class="tag">Sensor fusion</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ArmLab -->
+        <article class="card">
+          <div class="media">
+            <!-- 放 ArmLab 的照片或影片：assets/armlab.jpg -->
+            <img src="assets/armlab.jpg" alt="ArmLab robotic arm pick-and-place" loading="lazy" onerror="this.parentElement.style.display='none'; this.closest('.card').classList.add('no-media')">
+          </div>
+          <div class="body">
+            <div class="meta">ROB 550 team project · Python · 5-DOF arm</div>
+            <h3>ArmLab: Vision-Guided Pick-and-Place</h3>
+            <p>
+              Calibrated an RGB-D camera, transformed detected objects into the arm's frame, and implemented
+              forward and inverse kinematics for a 5-DOF serial arm. Tested in simulation first, then on the
+              physical arm, isolating calibration, kinematics, and joint control whenever real motion did not
+              match the model.
+            </p>
+            <div class="tags">
+              <span class="tag">Kinematics</span><span class="tag">Camera calibration</span>
+              <span class="tag">RGB-D</span><span class="tag">Manipulation</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <h2 style="margin-top:44px">More Projects</h2>
+      <p class="sub">Coursework and research.</p>
+      <div class="grid2">
+        <div class="small-card">
+          <h4>Sonar-Based AUV Localization</h4>
+          <p>ROB 572. Particle filter for global AUV localization by matching multibeam sonar readings against georeferenced bathymetric maps, without GPS.</p>
+          <div class="tags"><span class="tag">Particle filter</span><span class="tag">GPS-denied</span></div>
+        </div>
+        <div class="small-card">
+          <h4>RL Navigation for a KVLCC2 Tanker</h4>
+          <p>Team project, simulation only. PPO agent (Stable-Baselines3) with MMG surge, sway, and yaw dynamics. I built the staged obstacle curriculum and radar-proximity reward shaping.</p>
+          <div class="tags"><span class="tag">PPO</span><span class="tag">Reward shaping</span></div>
+        </div>
+        <div class="small-card">
+          <h4>FourierCLIP: X-ray Anomaly Detection</h4>
+          <p>EECS 545 team project. I designed a frequency-domain CNN encoder fused with CLIP features and a multi-prompt scoring method that raised AUROC by 0.067.</p>
+          <div class="tags"><span class="tag">PyTorch</span><span class="tag">CLIP</span></div>
+          <a href="https://github.com/yslin0524/chest-xray-anomaly-winclip" style="font-weight:600;font-size:14.5px">Code →</a>
+        </div>
+        <div class="small-card">
+          <h4>AUV Path Planning and Control</h4>
+          <p>Undergraduate research at National Taiwan University on path planning and feedback control for autonomous underwater vehicles.</p>
+          <div class="tags"><span class="tag">AUV</span><span class="tag">Control</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <p class="sub">Naval architecture background, robotics software focus.</p>
+      <p style="max-width:720px">
+        I'm from Taiwan and have worked on autonomous vehicles in the water since my undergrad at National
+        Taiwan University. Naval architecture gave me a strong base in vehicle dynamics and the marine
+        environment; robotics gave me the software side. What I enjoy most is debugging on real hardware
+        and turning a vague failure into a specific, testable cause.
+      </p>
+      <div class="skills" style="margin-top:22px">
+        <div><h4>Languages</h4><p>C++ (C++17), Python, MATLAB</p></div>
+        <div><h4>Robotics</h4><p>ROS 2, Nav2, OMPL, Gazebo, Foxglove</p></div>
+        <div><h4>Planning &amp; Estimation</h4><p>Hybrid A*, A*, particle filters, SLAM, sensor fusion</p></div>
+        <div><h4>Control</h4><p>PID, MPC, nonlinear and adaptive control</p></div>
+        <div><h4>ML</h4><p>PyTorch, CNNs, Stable-Baselines3, edge deployment</p></div>
+        <div><h4>Languages spoken</h4><p>English, Mandarin</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section id="education">
+    <div class="wrap">
+      <h2>Education</h2>
+      <div class="edu" style="margin-top:20px">
+        <div class="row">
+          <div><b>University of Michigan</b><span>MS in Robotics</span></div>
+          <span>2024 – 2026</span>
+        </div>
+        <div class="row">
+          <div><b>University of Michigan</b><span>MSE in Naval Architecture and Marine Engineering</span></div>
+          <span>2024 – 2026</span>
+        </div>
+        <div class="row">
+          <div><b>National Taiwan University</b><span>BS in Engineering Science and Ocean Engineering</span></div>
+          <span>2020 – 2024</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="mailto:ethan.lin5568@gmail.com">ethan.lin5568@gmail.com</a> ·
+    <a href="https://github.com/yslin0524">GitHub</a> ·
+    <a href="https://www.linkedin.com/in/yishenglin0524/">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
